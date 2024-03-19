@@ -19,6 +19,7 @@ import {
   Typography,
 } from "@mui/material";
 import { dashboard_links } from "../../constants/dashboard/dashboard_links";
+import { useNavigate } from "react-router-dom";
 
 const DashboardWrapper = (props: any) => {
   const COMPANY_NAME = "Funshine Carts";
@@ -40,7 +41,11 @@ const DashboardWrapper = (props: any) => {
         <Divider />
         <List>
           {dashboard_links.map((link, index) => (
-            <ListItem disablePadding key={index}>
+            <ListItem
+              disablePadding
+              key={index}
+              onClick={() => (window.location.href = `${link.link}`)}
+            >
               <ListItemButton>
                 <ListItemIcon>
                   <link.icon />

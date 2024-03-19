@@ -9,7 +9,7 @@ const Dashboard = () => {
   return (
     <>
      <DashboardWrapper>
-
+      <p>Hello World</p>
      </DashboardWrapper>
     </>
   );
