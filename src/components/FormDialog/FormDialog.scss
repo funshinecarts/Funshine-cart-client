@@ -1,4 +1,10 @@
-.dialog__button{
+.dialog__button {
   margin-bottom: 20px !important;
   margin-top: 5px;
+}
+
+.dialog__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }

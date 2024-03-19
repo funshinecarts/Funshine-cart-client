@@ -9,8 +9,12 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { FormDialogTypes } from "./FormDialog.types";
 
 import "./FormDialog.scss";
+import { Box, TextField } from "@mui/material";
 
-export const FormDialog: React.FC<FormDialogTypes> = ({ buttonHeader }) => {
+export const FormDialog: React.FC<FormDialogTypes> = ({
+  buttonHeader,
+  fields,
+}) => {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -37,13 +41,26 @@ export const FormDialog: React.FC<FormDialogTypes> = ({ buttonHeader }) => {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"Use Google's location service?"}
+          Add Product To The System
         </DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Let Google help apps determine location. This means sending
-            anonymous location data to Google, even when no apps are running.
-          </DialogContentText>
+          <Box
+            component="form"
+            sx={{ width: 500, paddingY: "10px" }}
+            className="dialog__form"
+            noValidate
+            autoComplete="off"
+          >
+            {fields.map((field, index) => (
+              <TextField
+                id={field.field_name}
+                label={field.label}
+                variant={"outlined"}
+                type={field.type}
+                sx={{ width: "100%" }}
+              />
+            ))}
+          </Box>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Disagree</Button>
