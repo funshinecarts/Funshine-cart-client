@@ -1,4 +1,5 @@
 export interface ProductTypes {
+  _id: string;
   photo: string;
   name: string;
   price: number;
@@ -9,4 +10,5 @@ export interface ProductTypes {
 
 export interface ProductCardTypes {
   product: ProductTypes;
+  fetchCarts?: () => void;
 }

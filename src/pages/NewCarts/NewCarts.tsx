@@ -21,7 +21,10 @@ const NewCarts = () => {
     try {
       setLoading(true);
       const { data } = await axios_instance.get("/product/list");
-      setCarts(data?.products);
+      const newCarts = data.products.filter(
+        (product) => product.condition === "new"
+      );
+      setCarts(newCarts);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -32,10 +35,14 @@ const NewCarts = () => {
 
   return (
     <DashboardWrapper>
-      <AddProduct buttonName="Add New Cart" type="new" />
+      <AddProduct
+        buttonName="Add New Cart"
+        type="new"
+        fetchProducts={fetchCarts}
+      />
       <div className="cards">
         {carts.map((cart, index) => (
-          <ProductCard key={index} product={cart}  />
+          <ProductCard key={index} product={cart} fetchCarts={fetchCarts} />
         ))}
       </div>
     </DashboardWrapper>

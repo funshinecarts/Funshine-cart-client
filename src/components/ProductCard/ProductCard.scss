@@ -15,25 +15,24 @@
   height: auto;
 }
 
-.card__overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;      
-  border-radius: calc(var(--curve) * 1px);    
-  background-color: var(--surface-color);      
-  transform: translateY(100%);
-  transition: .2s ease-in-out;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;  color: #e9eff641;
+// .card__overlay {
+//   position: absolute;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   z-index: 1;      
+//   border-radius: calc(var(--curve) * 1px);    
+//   background-color: var(--surface-color);      
+//   transform: translateY(100%);
+//   transition: .2s ease-in-out;
+//   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;  color: #e9eff641;
 
-}
+// }
 
-.card:hover .card__overlay {
-  transform: translateY(0);
-}
+
 
 .card__header {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;  color: #e9eff641;
   position: relative;
   display: flex;
   align-items: center;
@@ -41,7 +40,6 @@
   padding: 2em;
   border-radius: calc(var(--curve) * 1px) 0 0 0;    
   background-color: var(--surface-color);
-  transform: translateY(-100%);
   transition: .2s ease-in-out;
 }
 
@@ -59,9 +57,7 @@
   d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
 }       
 
-.card:hover .card__header {
-  transform: translateY(0);
-}
+
 
 .card__thumb {
   flex-shrink: 0;
