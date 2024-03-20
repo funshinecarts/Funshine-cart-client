@@ -7,6 +7,7 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 import "./UsedCarts.scss";
 import { ProductTypes } from "../../components/ProductCard/ProductCard.types";
 import axios_instance from "../../services/api";
+import { Box, CircularProgress } from "@mui/material";
 
 const UsedCarts = () => {
   const [carts, setCarts] = useState<ProductTypes[]>([]);
@@ -39,11 +40,19 @@ const UsedCarts = () => {
         type="used"
         fetchProducts={fetchCarts}
       />
-      <div className="cards">
-        {carts.map((cart, index) => (
-          <ProductCard key={index} product={cart} fetchCarts={fetchCarts} />
-        ))}
-      </div>
+      {loading ? (
+        <Box
+          sx={{ display: "flex", justifyContent: "center", padding: "50px" }}
+        >
+          <CircularProgress />
+        </Box>
+      ) : (
+        <div className="cards">
+          {carts.map((cart, index) => (
+            <ProductCard key={index} product={cart} fetchCarts={fetchCarts} />
+          ))}
+        </div>
+      )}
     </DashboardWrapper>
   );
 };

@@ -58,7 +58,7 @@ const ProductCard: React.FC<ProductCardTypes> = ({ product, fetchCarts }) => {
               variant="contained"
               onClick={() => setOpenEditDialog(true)}
             >
-              Edit
+              Edit Stock
             </Button>
           </>
         )}

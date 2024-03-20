@@ -8,6 +8,7 @@ import AddProduct from "../../components/AddProduct/AddProduct";
 import "./NewCarts.scss";
 import axios_instance from "../../services/api";
 import { ProductTypes } from "../../components/ProductCard/ProductCard.types";
+import { Box, CircularProgress } from "@mui/material";
 
 const NewCarts = () => {
   const [carts, setCarts] = useState<ProductTypes[]>([]);
@@ -40,11 +41,19 @@ const NewCarts = () => {
         type="new"
         fetchProducts={fetchCarts}
       />
-      <div className="cards">
-        {carts.map((cart, index) => (
-          <ProductCard key={index} product={cart} fetchCarts={fetchCarts} />
-        ))}
-      </div>
+      {loading ? (
+        <Box
+          sx={{ display: "flex", justifyContent: "center", padding: "50px" }}
+        >
+          <CircularProgress />
+        </Box>
+      ) : (
+        <div className="cards">
+          {carts.map((cart, index) => (
+            <ProductCard key={index} product={cart} fetchCarts={fetchCarts} />
+          ))}
+        </div>
+      )}
     </DashboardWrapper>
   );
 };

@@ -5,7 +5,7 @@ import axios_instance from "../../services/api";
 import { ProductTypes } from "../ProductCard/ProductCard.types";
 
 import "./Dashboard.scss";
-import { Box } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import StatsCard from "../StatsCard/StatsCard";
 import ProductCard from "../ProductCard/ProductCard";
 
@@ -44,20 +44,52 @@ const Dashboard = () => {
   return (
     <>
       <DashboardWrapper>
-        <Box sx={{ display: "flex", gap: "20px", flexWrap: "wrap", mt: 2 }}>
-          <StatsCard title="New Carts Available" number={newCarts.length} />
-          <StatsCard title="Used Carts Available" number={usedCarts.length} />
-          <StatsCard title="New Carts Valuation" number={newCartValuation} money/>
-          <StatsCard title="Used Carts Valuation" number={usedCartValuation} money/>
-        </Box>
-        <Box sx={{ mt: 5 }}>
-          <h3>Featured Carts</h3>
-          <Box sx={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 4, mt: 2}}>
-            {carts.slice(0, 5).map((cart, index) => (
-              <ProductCard key={index} product={cart} fetchCarts={fetchCarts} />
-            ))}
+        {loading ? (
+          <Box
+            sx={{ display: "flex", justifyContent: "center", padding: "50px" }}
+          >
+            <CircularProgress />
           </Box>
-        </Box>
+        ) : (
+          <>
+            <Box sx={{ display: "flex", gap: "20px", flexWrap: "wrap", mt: 2 }}>
+              <StatsCard title="New Carts Available" number={newCarts.length} />
+              <StatsCard
+                title="Used Carts Available"
+                number={usedCarts.length}
+              />
+              <StatsCard
+                title="New Carts Valuation"
+                number={newCartValuation}
+                money
+              />
+              <StatsCard
+                title="Used Carts Valuation"
+                number={usedCartValuation}
+                money
+              />
+            </Box>
+            <Box sx={{ mt: 5 }}>
+              <h3>Featured Carts</h3>
+              <Box
+                sx={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+                  gap: 4,
+                  mt: 2,
+                }}
+              >
+                {carts.slice(0, 5).map((cart, index) => (
+                  <ProductCard
+                    key={index}
+                    product={cart}
+                    fetchCarts={fetchCarts}
+                  />
+                ))}
+              </Box>
+            </Box>
+          </>
+        )}
       </DashboardWrapper>
     </>
   );
