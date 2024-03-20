@@ -12,10 +12,12 @@ import {
 } from "@mui/material";
 import axios_instance from "../../services/api";
 import DeleteDialog from "../DeleteDialog/DeleteDialog";
+import StockEditDialog from "../StockEditDialog/StockEditDialog";
 
 const ProductCard: React.FC<ProductCardTypes> = ({ product, fetchCarts }) => {
   const [loading, setLoading] = useState(false);
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
+  const [openEditDialog, setOpenEditDialog] = useState(false);
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -51,7 +53,11 @@ const ProductCard: React.FC<ProductCardTypes> = ({ product, fetchCarts }) => {
             >
               Delete
             </Button>
-            <Button size="small" variant="contained">
+            <Button
+              size="small"
+              variant="contained"
+              onClick={() => setOpenEditDialog(true)}
+            >
               Edit
             </Button>
           </>
@@ -64,6 +70,14 @@ const ProductCard: React.FC<ProductCardTypes> = ({ product, fetchCarts }) => {
         open={openDeleteDialog}
         setOpen={setOpenDeleteDialog}
         product_id={product._id}
+      />
+      <StockEditDialog
+        fetchCarts={fetchCarts}
+        loading={loading}
+        setLoading={setLoading}
+        open={openEditDialog}
+        setOpen={setOpenEditDialog}
+        product={product}
       />
     </Card>
   );

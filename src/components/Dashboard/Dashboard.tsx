@@ -47,8 +47,8 @@ const Dashboard = () => {
         <Box sx={{ display: "flex", gap: "20px", flexWrap: "wrap", mt: 2 }}>
           <StatsCard title="New Carts Available" number={newCarts.length} />
           <StatsCard title="Used Carts Available" number={usedCarts.length} />
-          <StatsCard title="New Carts Valuation" number={newCartValuation} />
-          <StatsCard title="Used Carts Valuation" number={usedCartValuation} />
+          <StatsCard title="New Carts Valuation" number={newCartValuation} money/>
+          <StatsCard title="Used Carts Valuation" number={usedCartValuation} money/>
         </Box>
         <Box sx={{ mt: 5 }}>
           <h3>Featured Carts</h3>

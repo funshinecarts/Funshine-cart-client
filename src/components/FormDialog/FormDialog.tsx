@@ -63,8 +63,8 @@ export const FormDialog: React.FC<FormDialogTypes> = ({
           >
             {fields.map((field, index) => (
               <TextField
-                key={index}
                 {...register(field.field_name as string)}
+                key={index}
                 id={field.field_name}
                 label={field.label}
                 variant={"outlined"}
