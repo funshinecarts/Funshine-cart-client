@@ -10,13 +10,18 @@ import { FormDialogTypes } from "./FormDialog.types";
 
 import "./FormDialog.scss";
 import { Box, TextField } from "@mui/material";
+import ImagePicker from "../ImagePicker/ImagePicker";
 
 export const FormDialog: React.FC<FormDialogTypes> = ({
   buttonHeader,
   fields,
+  open,
+  setOpen,
+  register,
+  submitFields,
+  errors,
+  watch
 }) => {
-  const [open, setOpen] = React.useState(false);
-
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -40,7 +45,11 @@ export const FormDialog: React.FC<FormDialogTypes> = ({
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title" variant="h6" sx={{fontWeight: 600}}>
+        <DialogTitle
+          id="alert-dialog-title"
+          variant="h6"
+          sx={{ fontWeight: 600 }}
+        >
           Add Product To The System
         </DialogTitle>
         <DialogContent>
@@ -53,18 +62,31 @@ export const FormDialog: React.FC<FormDialogTypes> = ({
           >
             {fields.map((field, index) => (
               <TextField
+                key={index}
+                {...register(field.field_name as string)}
                 id={field.field_name}
                 label={field.label}
                 variant={"outlined"}
                 type={field.type}
                 sx={{ width: "100%" }}
+                error={errors[field.field_name as string] ? true : false}
+                helperText={errors[field.field_name as string]?.message}
               />
             ))}
+
+            <ImagePicker
+              error={errors["photo"]?.message as string}
+              fieldName={"photo"}
+              register={register}
+              watch={watch}
+            />
           </Box>
         </DialogContent>
-        <DialogActions sx={{marginBottom: "10px", marginRight: "15px"}}>
-          <Button onClick={handleClose} variant="outlined" color="error">Cancel</Button>
-          <Button onClick={handleClose} variant="contained" autoFocus>
+        <DialogActions sx={{ marginBottom: "10px", marginRight: "15px" }}>
+          <Button onClick={handleClose} variant="outlined" color="error">
+            Cancel
+          </Button>
+          <Button onClick={submitFields} variant="contained" autoFocus>
             Add Product
           </Button>
         </DialogActions>

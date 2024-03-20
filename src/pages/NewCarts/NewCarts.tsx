@@ -7,11 +7,20 @@ import AddProduct from "../../components/AddProduct/AddProduct";
 
 import "./NewCarts.scss";
 
-
 const NewCarts = () => {
+  const [formData, setFormData] = React.useState({});
+  const [loading, setLoading] = React.useState(false);
+
+  console.log(loading, "loading new cart")
+
   return (
     <DashboardWrapper>
-      <AddProduct />
+      <AddProduct
+        buttonName="Add New Cart"
+        type="new"
+        setFormData={setFormData}
+        setLoading={setLoading}
+      />
       <div className="cards">
         <ProductCard />
         <ProductCard />
