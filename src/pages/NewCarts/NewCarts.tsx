@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import DashboardWrapper from "../../components/DashboardWrapper/DashboardWrapper";
 import ProductCard from "../../components/ProductCard/ProductCard";
@@ -6,26 +6,37 @@ import FormDialog from "../../components/FormDialog/FormDialog";
 import AddProduct from "../../components/AddProduct/AddProduct";
 
 import "./NewCarts.scss";
+import axios_instance from "../../services/api";
+import { ProductTypes } from "../../components/ProductCard/ProductCard.types";
 
 const NewCarts = () => {
-  const [formData, setFormData] = React.useState({});
-  const [loading, setLoading] = React.useState(false);
+  const [carts, setCarts] = useState<ProductTypes[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
-  console.log(loading, "loading new cart")
+  useEffect(() => {
+    fetchCarts();
+  }, []);
+
+  const fetchCarts = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios_instance.get("/product/list");
+      setCarts(data?.products);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+      window.alert("Failed To Fetch Products");
+    }
+  };
 
   return (
     <DashboardWrapper>
-      <AddProduct
-        buttonName="Add New Cart"
-        type="new"
-        setFormData={setFormData}
-        setLoading={setLoading}
-      />
+      <AddProduct buttonName="Add New Cart" type="new" />
       <div className="cards">
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        {carts.map((cart, index) => (
+          <ProductCard key={index} product={cart}  />
+        ))}
       </div>
     </DashboardWrapper>
   );

@@ -8,9 +8,8 @@ export interface AddProductFieldTypes {
 
 export interface AddProductTypes {
   buttonName : string;
-  setFormData: React.Dispatch<React.SetStateAction<any>>;
   type: "used" | "new";
-  setLoading?: React.Dispatch<React.SetStateAction<boolean>>;
+  fetchProducts?: () => void;
 }
 
 export interface AddProductFormData {

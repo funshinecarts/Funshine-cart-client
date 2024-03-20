@@ -13,11 +13,11 @@ import toast, { Toaster } from "react-hot-toast";
 
 const AddProduct: React.FC<AddProductTypes> = ({
   buttonName,
-  setFormData,
   type,
-  setLoading,
+  fetchProducts,
 }) => {
   const [open, setOpen] = React.useState<boolean>(false);
+  const [loading, setLoading] = React.useState<boolean>(false);
   const addProductFields: AddProductFieldTypes[] = [
     {
       field_name: "name",
@@ -76,13 +76,14 @@ const AddProduct: React.FC<AddProductTypes> = ({
     try {
       setLoading && setLoading(true);
       const response = await addProduct(formData);
-      toast('Product added successfully', { icon: '🚀' });
+      toast("Product added successfully", { icon: "🚀" });
       setLoading && setLoading(false);
       setOpen(false);
+      fetchProducts && fetchProducts();
     } catch (error) {
       console.error(error);
       setLoading && setLoading(false);
-      toast.error('Failed to add product');
+      toast.error("Failed to add product");
     }
   };
 
@@ -93,6 +94,7 @@ const AddProduct: React.FC<AddProductTypes> = ({
         buttonHeader={buttonName}
         fields={addProductFields}
         open={open}
+        loading={loading}
         setOpen={setOpen}
         register={register}
         errors={errors}

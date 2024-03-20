@@ -9,7 +9,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { FormDialogTypes } from "./FormDialog.types";
 
 import "./FormDialog.scss";
-import { Box, TextField } from "@mui/material";
+import { Box, CircularProgress, TextField } from "@mui/material";
 import ImagePicker from "../ImagePicker/ImagePicker";
 
 export const FormDialog: React.FC<FormDialogTypes> = ({
@@ -20,7 +20,8 @@ export const FormDialog: React.FC<FormDialogTypes> = ({
   register,
   submitFields,
   errors,
-  watch
+  watch,
+  loading,
 }) => {
   const handleClickOpen = () => {
     setOpen(true);
@@ -82,14 +83,26 @@ export const FormDialog: React.FC<FormDialogTypes> = ({
             />
           </Box>
         </DialogContent>
-        <DialogActions sx={{ marginBottom: "10px", marginRight: "15px" }}>
-          <Button onClick={handleClose} variant="outlined" color="error">
-            Cancel
-          </Button>
-          <Button onClick={submitFields} variant="contained" autoFocus>
-            Add Product
-          </Button>
-        </DialogActions>
+        {loading ? (
+          <Box
+            sx={{
+              padding: "20px",
+              display: "flex",
+              justifyContent: "flex-end",
+            }}
+          >
+            <CircularProgress />
+          </Box>
+        ) : (
+          <DialogActions sx={{ marginBottom: "10px", marginRight: "15px" }}>
+            <Button onClick={handleClose} variant="outlined" color="error">
+              Cancel
+            </Button>
+            <Button onClick={submitFields} variant="contained" autoFocus>
+              Add Product
+            </Button>
+          </DialogActions>
+        )}
       </Dialog>
     </React.Fragment>
   );
