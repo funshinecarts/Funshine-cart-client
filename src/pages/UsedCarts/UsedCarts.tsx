@@ -41,7 +41,7 @@ const UsedCarts = () => {
       />
       <div className="cards">
         {carts.map((cart, index) => (
-          <ProductCard key={index} product={cart} />
+          <ProductCard key={index} product={cart} fetchCarts={fetchCarts} />
         ))}
       </div>
     </DashboardWrapper>

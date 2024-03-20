@@ -22,7 +22,7 @@ const ProductCard: React.FC<ProductCardTypes> = ({ product, fetchCarts }) => {
       <CardMedia
         sx={{ height: "300px", objectFit: "cover" }}
         image={product.photo}
-        title="green iguana"
+        title={product.name}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -32,7 +32,7 @@ const ProductCard: React.FC<ProductCardTypes> = ({ product, fetchCarts }) => {
           Price: ${product.price}
         </Typography>
         <Typography variant="body1" color="text.secondary" sx={{ mt: "5px" }}>
-          Stock: ${product.stock}
+          Stock: {product.stock}
         </Typography>
         <Typography variant="body2" color="text.secondary" sx={{ mt: "5px" }}>
           {product.description}
