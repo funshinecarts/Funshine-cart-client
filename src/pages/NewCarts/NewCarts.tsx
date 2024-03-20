@@ -1,9 +1,12 @@
 import React from "react";
+
 import DashboardWrapper from "../../components/DashboardWrapper/DashboardWrapper";
-import "./NewCarts.scss";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import FormDialog from "../../components/FormDialog/FormDialog";
 import AddProduct from "../../components/AddProduct/AddProduct";
+
+import "./NewCarts.scss";
+
 
 const NewCarts = () => {
   return (

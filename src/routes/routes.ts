@@ -10,6 +10,11 @@ const routes: Route[] = [
     secured: true,
   },
   {
+    path: "/dashboard",
+    component: Dashboard,
+    secured: true,
+  },
+  {
     path: "/new-golf-carts",
     component: NewCarts,
     secured: true,

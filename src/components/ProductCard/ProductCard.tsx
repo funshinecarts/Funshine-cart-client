@@ -5,7 +5,7 @@ const ProductCard = () => {
   return (
     <a href="" className="card">
       <img
-        src="https://i.imgur.com/oYiTqum.jpg"
+        src="https://picsum.photos/500/500"
         className="card__image"
         alt=""
       />
@@ -18,7 +18,7 @@ const ProductCard = () => {
             <h3 className="card__title">Voyager PIONEER</h3>
             <p className="card__price">Price: $300</p>
             <p className="card__stock">Stock: 120</p>
-          </div>
+        </div>
         </div>
         <p className="card__description">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores,

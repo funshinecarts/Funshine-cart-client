@@ -6,10 +6,11 @@
   border-radius: calc(var(--curve) * 1px);
   overflow: hidden;
   text-decoration: none;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;  color: #e9eff641;
 }
 
-.card__image {      
+.card__image {    
+  object-fit: cover !important;  
   width: 100%;
   height: auto;
 }
@@ -24,6 +25,8 @@
   background-color: var(--surface-color);      
   transform: translateY(100%);
   transition: .2s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;  color: #e9eff641;
+
 }
 
 .card:hover .card__overlay {
@@ -68,19 +71,23 @@
 }
 
 .card__title {
-  font-size: 1em;
+  font-size: 1.2em;
   margin: 0 0 .3em;
   color: #1876D2;
+  
 }
 
 .card__stock{
   font-size: 1rem;
   color: black;
+  font-weight: 600;
 }
 
 .card__price{
   font-size: 1rem;
   color: black;
+  font-weight: 600;
+
 }
 
 

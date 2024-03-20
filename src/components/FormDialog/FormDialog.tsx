@@ -40,7 +40,7 @@ export const FormDialog: React.FC<FormDialogTypes> = ({
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
+        <DialogTitle id="alert-dialog-title" variant="h6" sx={{fontWeight: 600}}>
           Add Product To The System
         </DialogTitle>
         <DialogContent>
@@ -62,10 +62,10 @@ export const FormDialog: React.FC<FormDialogTypes> = ({
             ))}
           </Box>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Disagree</Button>
-          <Button onClick={handleClose} autoFocus>
-            Agree
+        <DialogActions sx={{marginBottom: "10px", marginRight: "15px"}}>
+          <Button onClick={handleClose} variant="outlined" color="error">Cancel</Button>
+          <Button onClick={handleClose} variant="contained" autoFocus>
+            Add Product
           </Button>
         </DialogActions>
       </Dialog>
