@@ -11,15 +11,15 @@ export const ADD_PRODUCT_SCHEMA = yup.object().shape({
     .typeError("Enter Valid Price")
     .required("Product Id is required"),
   description: yup.string().required("Description is required"),
-  photo: yup
-    .mixed()
-    .required("Photo is required")
-    .test("fileType", "Invalid file type", (value: any) => {
-      if (!value.length) return false;
-      return (
-        value[0].type === "image/jpeg" ||
-        value[0].type === "image/png" ||
-        value[0].type === "image/gif"
-      );
-    }),
+  // photos: yup
+  //   .array()
+  //   .min(1, "At least one photo is required")
+  //   .required("Photo is required")
+  //   .test("fileTypes", "Invalid file types", (value: any) => {
+  //     if (!value || value.length === 0) return false;
+  //     return value.every(
+  //       (file: any) =>
+  //         file && (file.type === "image/jpeg" || file.type === "image/png" || file.type === "image/gif")
+  //     );
+  //   }),
 });

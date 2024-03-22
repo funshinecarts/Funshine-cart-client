@@ -17,5 +17,5 @@ export interface AddProductFormData {
   price: number;
   stock: number;
   description: string;
-  photo: any;
+  photos: any;
 }

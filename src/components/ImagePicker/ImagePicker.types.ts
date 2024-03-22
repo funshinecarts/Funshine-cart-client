@@ -5,5 +5,6 @@ export interface ImagePickerTypes {
   error: string
   register: any;
   fieldName: string;
-  watch : any
+  watch : any;
+  handleFileInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }

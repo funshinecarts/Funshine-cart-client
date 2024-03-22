@@ -53,8 +53,9 @@ const AddProduct: React.FC<AddProductTypes> = ({
     handleSubmit,
     register,
     watch,
+    setValue,
     formState: { errors },
-  } = useForm<AddProductFormData>({
+  } = useForm<any>({
     resolver: yupResolver(ADD_PRODUCT_SCHEMA),
   });
 
@@ -64,12 +65,24 @@ const AddProduct: React.FC<AddProductTypes> = ({
 
     // Append all form fields except for 'photo'
     for (const [key, value] of Object.entries(data)) {
-      if (key !== "photo") formData.append(key, value);
+      formData.append(key, value);
     }
 
+    formData.delete("photos");
+
+    const photos_array: any[] = [];
+
+    for (let i = 0; i < data.photos.length; i++) {
+      formData.append('photos', data.photos[i]);
+    }
+
+    // data.photos.map((photo: any) => {
+    //   photos_array.push(photo);
+    // });
+
+    // formData.append("photos", photos_array)
     // Append 'condition' field and 'photo' file separately
     formData.append("condition", type);
-    formData.append("photo", data.photo[0]); // Assuming data.photo[0] is the File object
 
     // Log to check the file information (will show an empty object after appending to FormData)
 
@@ -91,6 +104,7 @@ const AddProduct: React.FC<AddProductTypes> = ({
     <>
       <Toaster />
       <FormDialog
+        setValue={setValue}
         buttonHeader={buttonName}
         fields={addProductFields}
         open={open}

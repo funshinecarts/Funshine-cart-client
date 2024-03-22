@@ -23,7 +23,7 @@ const ProductCard: React.FC<ProductCardTypes> = ({ product, fetchCarts }) => {
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         sx={{ height: "300px", objectFit: "cover" }}
-        image={product.photo}
+        image={product.photos[0]}
         title={product.name}
       />
       <CardContent>
@@ -63,7 +63,7 @@ const ProductCard: React.FC<ProductCardTypes> = ({ product, fetchCarts }) => {
             <Button
               size="small"
               variant="outlined"
-              onClick={() => window.location.href = `/product/${product._id}`}
+              onClick={() => (window.location.href = `/product/${product._id}`)}
             >
               Details
             </Button>

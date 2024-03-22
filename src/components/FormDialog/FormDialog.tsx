@@ -11,6 +11,7 @@ import { FormDialogTypes } from "./FormDialog.types";
 import "./FormDialog.scss";
 import { Box, CircularProgress, TextField } from "@mui/material";
 import ImagePicker from "../ImagePicker/ImagePicker";
+import { useForm } from "react-hook-form";
 
 export const FormDialog: React.FC<FormDialogTypes> = ({
   buttonHeader,
@@ -22,7 +23,11 @@ export const FormDialog: React.FC<FormDialogTypes> = ({
   errors,
   watch,
   loading,
+  setValue
 }) => {
+
+  const [selectedFiles, setSelectedFiles] = React.useState<any>();
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -30,6 +35,10 @@ export const FormDialog: React.FC<FormDialogTypes> = ({
   const handleClose = () => {
     setOpen(false);
   };
+
+  const handleFileInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  };
+
 
   return (
     <React.Fragment>
@@ -76,8 +85,9 @@ export const FormDialog: React.FC<FormDialogTypes> = ({
             ))}
 
             <ImagePicker
-              error={errors["photo"]?.message as string}
-              fieldName={"photo"}
+              handleFileInputChange={handleFileInputChange}
+              error={errors["photos"]?.message as string}
+              fieldName={"photos"}
               register={register}
               watch={watch}
             />
