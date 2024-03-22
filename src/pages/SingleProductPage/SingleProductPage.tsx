@@ -44,7 +44,11 @@ export default function SingleProductPage() {
             navigation={true}
             modules={[Navigation, Autoplay]}
             className="mySwiper"
-            autoplay={{ delay: 3000 }} // Set the delay for autoplay (in milliseconds)
+            autoplay={{ delay: 3000 }}
+            style={{
+              boxShadow:
+                "rgba(0, 0, 0, 0.25) 0px 25px 50px -12px",
+            }}
           >
             {product?.photos.map((photo, index) => (
               <SwiperSlide key={index}>
