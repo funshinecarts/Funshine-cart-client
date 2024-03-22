@@ -20,3 +20,34 @@
   height: 100%;
   object-fit: cover;
 }
+
+.mySwiper {
+  height: 450px;
+  width: 450px;
+  margin: 0px;
+  border: 1px solid red;
+}
+.single_product-page{
+  display: grid;
+  gap: 25px;
+  grid-template-columns: 450px 1fr;
+}
+
+.product__details{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  p{
+    font-size: 18px;
+  }
+}
+.product__title{
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.product__description-title{
+  margin-bottom: 5px;
+  font-size: 18px;
+}
