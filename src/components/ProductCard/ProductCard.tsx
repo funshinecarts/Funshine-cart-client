@@ -37,7 +37,7 @@ const ProductCard: React.FC<ProductCardTypes> = ({ product, fetchCarts }) => {
           Stock: {product.stock}
         </Typography>
         <Typography variant="body2" color="text.secondary" sx={{ mt: "5px" }}>
-          {product.description}
+          {product.description.split(" ").slice(0, 20).join(" ")}...
         </Typography>
       </CardContent>
       <CardActions sx={{ padding: "15px", pt: 0 }}>
@@ -59,6 +59,13 @@ const ProductCard: React.FC<ProductCardTypes> = ({ product, fetchCarts }) => {
               onClick={() => setOpenEditDialog(true)}
             >
               Edit Stock
+            </Button>
+            <Button
+              size="small"
+              variant="outlined"
+              onClick={() => window.location.href = `/product/${product._id}`}
+            >
+              Details
             </Button>
           </>
         )}

@@ -5,6 +5,7 @@ export interface ProductTypes {
   price: number;
   stock: number;
   description: string;
+  createdAt: string;
   condition: "used" | "new";
 }
 
