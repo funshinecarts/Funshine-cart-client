@@ -1,4 +1,5 @@
 import Dashboard from "../components/Dashboard/Dashboard";
+import GlobalListing from "../pages/GlobalListing/GlobalListing";
 import NewCarts from "../pages/NewCarts/NewCarts";
 import ProductPage from "../pages/SingleProductPage/SingleProductPage";
 import UsedCarts from "../pages/UsedCarts/UsedCarts";
@@ -7,7 +8,7 @@ import { Route } from "./routes.types";
 const routes: Route[] = [
   {
     path: "/",
-    component: Dashboard,
+    component: GlobalListing,
     secured: true,
   },
   {
