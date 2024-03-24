@@ -13,6 +13,16 @@ const routes: Route[] = [
     secured: true,
   },
   {
+    path: "/listing",
+    component: GlobalListing,
+    secured: true,
+  },
+  {
+    path: "/listing/:condition",
+    component: GlobalListing,
+    secured: true,
+  },
+  {
     path: "/dashboard",
     component: Dashboard,
     secured: true,

@@ -13,7 +13,6 @@ const ProductsSection: React.FC<ProductsSectionTypes> = ({
         display: "grid",
         gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
         gap: 4,
-        mt: 2,
         padding: "20px",
        
       }}

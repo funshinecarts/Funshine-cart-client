@@ -3,15 +3,21 @@ import React, { useEffect, useState } from "react";
 import DashboardWrapper from "../DashboardWrapper/DashboardWrapper";
 import axios_instance from "../../services/api";
 import { ProductTypes } from "../ProductCard/ProductCard.types";
-
-import "./Dashboard.scss";
+import { useLocation } from "react-router-dom";
 import { Box, CircularProgress } from "@mui/material";
 import StatsCard from "../StatsCard/StatsCard";
 import ProductCard from "../ProductCard/ProductCard";
 
+import "./Dashboard.scss";
+
 const Dashboard = () => {
   const [loading, setLoading] = useState(false);
   const [carts, setCarts] = useState<ProductTypes[]>([]);
+
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  
+  console.log(queryParams, "params");
   useEffect(() => {
     fetchCarts();
   }, []);

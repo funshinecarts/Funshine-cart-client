@@ -40,6 +40,9 @@ const ProductCard: React.FC<ProductCardTypes> = ({
         <Typography variant="body1" color="text.secondary" sx={{ mt: "5px" }}>
           Stock: {product.stock}
         </Typography>
+        <Typography variant="body1" color="text.secondary" sx={{ mt: "5px" }}>
+          Condition: {product.condition}
+        </Typography>
         <Typography variant="body2" color="text.secondary" sx={{ mt: "5px" }}>
           {product.description.split(" ").slice(0, 20).join(" ")}...
         </Typography>
