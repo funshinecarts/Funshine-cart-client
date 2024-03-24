@@ -14,7 +14,11 @@ import axios_instance from "../../services/api";
 import DeleteDialog from "../DeleteDialog/DeleteDialog";
 import StockEditDialog from "../StockEditDialog/StockEditDialog";
 
-const ProductCard: React.FC<ProductCardTypes> = ({ product, fetchCarts }) => {
+const ProductCard: React.FC<ProductCardTypes> = ({
+  product,
+  fetchCarts,
+  type,
+}) => {
   const [loading, setLoading] = useState(false);
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [openEditDialog, setOpenEditDialog] = useState(false);
@@ -45,28 +49,46 @@ const ProductCard: React.FC<ProductCardTypes> = ({ product, fetchCarts }) => {
           <CircularProgress />
         ) : (
           <>
-            <Button
-              size="small"
-              variant="outlined"
-              color="error"
-              onClick={() => setOpenDeleteDialog(true)}
-            >
-              Delete
-            </Button>
-            <Button
-              size="small"
-              variant="contained"
-              onClick={() => setOpenEditDialog(true)}
-            >
-              Edit Stock
-            </Button>
-            <Button
-              size="small"
-              variant="outlined"
-              onClick={() => (window.location.href = `/product/${product._id}`)}
-            >
-              Details
-            </Button>
+            {type === "admin" && (
+              <>
+                <Button
+                  size="small"
+                  variant="outlined"
+                  color="error"
+                  onClick={() => setOpenDeleteDialog(true)}
+                >
+                  Delete
+                </Button>
+                <Button
+                  size="small"
+                  variant="contained"
+                  onClick={() => setOpenEditDialog(true)}
+                >
+                  Edit Stock
+                </Button>
+                <Button
+                  size="small"
+                  variant="outlined"
+                  onClick={() =>
+                    (window.location.href = `/product/${product._id}`)
+                  }
+                >
+                  Details
+                </Button>
+              </>
+            )}
+            {type === "user" && (
+              <Button
+                size="small"
+                variant="outlined"
+                sx={{ width: "100%" }}
+                onClick={() =>
+                  (window.location.href = `/user/product/${product._id}`)
+                }
+              >
+                Details
+              </Button>
+            )}
           </>
         )}
       </CardActions>

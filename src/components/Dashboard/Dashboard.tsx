@@ -84,6 +84,7 @@ const Dashboard = () => {
                     key={index}
                     product={cart}
                     fetchCarts={fetchCarts}
+                    type="admin"
                   />
                 ))}
               </Box>

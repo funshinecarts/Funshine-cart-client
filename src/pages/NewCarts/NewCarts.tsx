@@ -50,7 +50,7 @@ const NewCarts = () => {
       ) : (
         <div className="cards">
           {carts.map((cart, index) => (
-            <ProductCard key={index} product={cart} fetchCarts={fetchCarts} />
+            <ProductCard key={index} product={cart} fetchCarts={fetchCarts} type="admin" />
           ))}
         </div>
       )}

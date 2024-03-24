@@ -11,5 +11,6 @@ export interface ProductTypes {
 
 export interface ProductCardTypes {
   product: ProductTypes;
+  type: "user" | "admin";
   fetchCarts?: () => void;
 }

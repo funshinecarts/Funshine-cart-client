@@ -3,6 +3,7 @@ import GlobalListing from "../pages/GlobalListing/GlobalListing";
 import NewCarts from "../pages/NewCarts/NewCarts";
 import ProductPage from "../pages/SingleProductPage/SingleProductPage";
 import UsedCarts from "../pages/UsedCarts/UsedCarts";
+import UserProductPage from "../pages/UserProductPage/UserProductPage";
 import { Route } from "./routes.types";
 
 const routes: Route[] = [
@@ -29,6 +30,11 @@ const routes: Route[] = [
   {
     path: "/product/:id",
     component: ProductPage,
+    secured: true,
+  },
+  {
+    path: "/user/product/:id",
+    component: UserProductPage,
     secured: true,
   },
 ];
